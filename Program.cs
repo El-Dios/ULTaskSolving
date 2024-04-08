@@ -12,7 +12,7 @@ namespace UlearnTasks
     {
         static void Main(string[] args)
         {
-
+            
         }
         
     }
