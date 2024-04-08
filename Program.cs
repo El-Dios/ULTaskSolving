@@ -12,7 +12,7 @@ namespace UlearnTasks
     {
         static void Main(string[] args)
         {
-
+            
         }
         
     }
@@ -24,7 +24,7 @@ namespace UlearnTasks
         /// Select words from input lines that started with upper char and reverse 'em
         /// </summary>
         /// <param name="lines"></param>
-        /// <example>"решИла нЕ Упрощать и зашифРОВАтЬ Все послаНИЕ",
+        /// <example>lines[] = {"решИла нЕ Упрощать и зашифРОВАтЬ Все послаНИЕ",
         ///                        "дАже не Старайся нИЧЕГО у тЕбя нЕ получится с расшифРОВкой",
         ///                        "Сдавайся НЕ твоего ума Ты не споСОбЕн Но может быть",
         ///                        "если особенно упорно подойдешь к делу",
@@ -35,7 +35,7 @@ namespace UlearnTasks
         ///                        "то у тебя все получится",
         ///                        "и я буДу Писать тЕбЕ еще",
         ///                        "",
-        ///                        "чао",</example>
+        ///                        "чао",}</example>
         /// <returns>Decoded message</returns>
         public static string DecodeMessage(string[] lines)
         {
