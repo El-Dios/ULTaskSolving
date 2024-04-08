@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Security.Policy;
@@ -11,15 +12,60 @@ namespace UlearnTasks
     {
         static void Main(string[] args)
         {
-            int[] arr = { 1, 2, 3, 4, 5, 6 };
-            TaskSl.ShiftArrayLeftOn(ref arr, 5);
-            TaskSl.PrintArray(arr);
+            string[] inpText = {"решИла нЕ Упрощать и зашифРОВАтЬ Все послаНИЕ",
+                                "дАже не Старайся нИЧЕГО у тЕбя нЕ получится с расшифРОВкой",
+                                "Сдавайся НЕ твоего ума Ты не споСОбЕн Но может быть",
+                                "если особенно упорно подойдешь к делу",
+                                "",
+                                "будет Трудно конечнО",
+                                "Код ведЬ не из простых",
+                                "очень ХОРОШИЙ код",
+                                "то у тебя все получится",
+                                "и я буДу Писать тЕбЕ еще",
+                                "",
+                                "чао", };
+            Console.WriteLine(value: TaskSl.DecodeMessage(inpText));
         }
+        
     }
 
 
     class TaskSl
     {
+        /// <summary>
+        /// Select words from input lines that started with upper char and reverse 'em
+        /// </summary>
+        /// <param name="lines"></param>
+        /// <example>"решИла нЕ Упрощать и зашифРОВАтЬ Все послаНИЕ",
+        ///                        "дАже не Старайся нИЧЕГО у тЕбя нЕ получится с расшифРОВкой",
+        ///                        "Сдавайся НЕ твоего ума Ты не споСОбЕн Но может быть",
+        ///                        "если особенно упорно подойдешь к делу",
+        ///                        "",
+        ///                        "будет Трудно конечнО",
+        ///                        "Код ведЬ не из простых",
+        ///                        "очень ХОРОШИЙ код",
+        ///                        "то у тебя все получится",
+        ///                        "и я буДу Писать тЕбЕ еще",
+        ///                        "",
+        ///                        "чао",</example>
+        /// <returns>Decoded message</returns>
+        public static string DecodeMessage(string[] lines)
+        {
+            List<string> _words = new List<string>();
+
+            foreach (var _line in lines)
+            {
+                if (!string.IsNullOrEmpty(_line))
+                    foreach (var _word in _line.Split(' '))
+                        if (char.IsUpper(_word[0]))
+                            _words.Add(_word);
+            }
+
+            _words.Reverse();
+
+            return string.Join(" ", _words.ToArray());
+        }
+
         public static void ShiftArrayLeftOn(ref int[] array, int offset)
         {
             for (int i = 0; i < offset; i++)
