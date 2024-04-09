@@ -12,14 +12,40 @@ namespace UlearnTasks
     {
         static void Main(string[] args)
         {
-            
+            TaskSl.OptimizeContacts
         }
-        
-    }
 
+    }
 
     class TaskSl
     {
+        /// <summary>
+        /// From list of "name"->"email" strings generate dict by first 2 letter as a key and match strign as a value
+        /// </summary>
+        /// <param name="contacts"></param>
+        /// <example>
+        ///        "В: v@mail.ru",
+        ///        "Саша:a@lex.ru",
+        ///        "Ваня:ivan@grozniy.ru",
+        ///        "Ваня:vanechka@domain.com",
+        ///        "Паша:pavel@mail.list"
+        /// </example>
+        /// <returns>Dict key:Na(name) -> value {strings[name:email,...]}</returns>
+        public static Dictionary<string, List<string>> OptimizeContacts(List<string> contacts)
+        {
+            var dictionary = new Dictionary<string, List<string>>();
+
+            foreach (var _contact in contacts)
+            {
+                string _key = _contact.Split(':')[0];
+                _key = _key.Length <= 1 ? _key.Substring(0) : _key.Substring(0, 2);
+                if (!dictionary.ContainsKey(_key))
+                    dictionary[_key] = new List<string>();
+                dictionary[_key].Add(_contact);
+            }
+            return dictionary;
+        }
+
         /// <summary>
         /// Select words from input lines that started with upper char and reverse 'em
         /// </summary>
