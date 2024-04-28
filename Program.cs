@@ -14,11 +14,48 @@ namespace UlearnTasks
         {
 
         }
-
+        
     }
 
     class TaskSl
     {
+        /// <summary>
+        /// Windowing method search of the longest substring 
+        /// O(n) time complexity
+        /// </summary>
+        /// <param name="s"></param>
+        /// <example>
+        ///     string sequence = "abcbada"
+        ///     //answer is 4 (cbad)
+        /// </example>
+        /// <returns></returns>
+        public static int longestSubstring(string s)
+        {
+            int answer = 0, left = 0, right = 0;
+            HashSet<char> set = new HashSet<char>();
+
+            while (right < s.Length)
+            {
+                char c = s[right];
+                if (!set.Contains(c))
+                {
+                    set.Add(c);
+                    answer = Math.Max(answer, right - left + 1);
+                    right++;
+                }
+                else
+                {
+                    while (set.Contains(c))
+                    {
+                        set.Remove(s[left]);
+                        left++;
+                    }
+                }
+            }
+
+            return answer;
+        }
+
         /// <summary>
         /// From list of "name"->"email" strings generate dict by first 2 letter as a key and match strign as a value
         /// </summary>
