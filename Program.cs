@@ -13,12 +13,29 @@ namespace UlearnTasks
         static void Main(string[] args)
         {
 
-        }
+        }        
         
     }
 
     class TaskSl
     {
+        /// <summary>
+        /// Statistics of appears each digits at the most significant digit in the numbers from the text
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns>Massive of ints contains statistics for digits at their index position</returns>
+        public static int[] GetBenfordStatistics(string text)
+        {
+            var statistics = new int[10];
+            foreach (var word in text.Split(' '))
+            {
+                int c = char.IsDigit(word[0]) ? Convert.ToInt32(char.GetNumericValue(word[0])) : 0;
+                if (c != 0)
+                    statistics[c]++;
+            }
+            return statistics;
+        }
+
         /// <summary>
         /// Windowing method search of the longest substring 
         /// O(n) time complexity
@@ -29,7 +46,7 @@ namespace UlearnTasks
         ///     //answer is 4 (cbad)
         /// </example>
         /// <returns></returns>
-        public static int longestSubstring(string s)
+        public static int LongestSubstring(string s)
         {
             int answer = 0, left = 0, right = 0;
             HashSet<char> set = new HashSet<char>();
