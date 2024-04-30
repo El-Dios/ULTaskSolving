@@ -13,12 +13,23 @@ namespace UlearnTasks
         static void Main(string[] args)
         {
 
-        }        
-        
+        }
+
     }
 
     class TaskSl
     {
+        /// <summary>
+        /// From input string text remove all separators (space, comma, etc.).
+        /// </summary>
+        /// <param name="text"></param>
+        /// <example>"США: 329957441; 15.07.2020; 4.24%"</example>
+        /// <returns>joined by tab separator string</returns>
+        public static string ReplaceIncorrectSeparators(string text)
+        {
+            return String.Join("\t", text.Split(new char[] { ' ', ',', ';', ':', '-' }, StringSplitOptions.RemoveEmptyEntries));
+        }
+
         /// <summary>
         /// Statistics of appears each digits at the most significant digit in the numbers from the text
         /// </summary>
