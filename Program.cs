@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Security.Policy;
+using System.Text;
 using static UlearnTasks.Program;
 
 namespace UlearnTasks
@@ -14,11 +15,32 @@ namespace UlearnTasks
         {
 
         }
-
+        
     }
 
     class TaskSl
     {
+        /// <summary>
+        /// Stack be like stringBuilder handler. 
+        /// Append string when find "push" (/wo "push").
+        /// Remove specified number of chars afyer "pop" appears.
+        /// </summary>
+        /// <param name="commands"></param>
+        /// <example> "push Привет! Пока!", "pop 5" </example>
+        /// <returns>converted from StringBuilder to string result of "push"/"pop" commands.</returns>
+        private static string ApplyCommands(string[] commands)
+        {
+            var strBuilder = new StringBuilder();
+            foreach (var command in commands)
+            {
+                string[] tmpComms = command.Trim().Split(' ');
+                if (tmpComms[0].ToLower() == "push")
+                    strBuilder.Append(command.Substring(5));
+                else strBuilder.Remove(strBuilder.Length - int.Parse(tmpComms[1]), int.Parse(tmpComms[1]));
+            }
+            return strBuilder.ToString();
+        }
+
         /// <summary>
         /// From input string text remove all separators (space, comma, etc.).
         /// </summary>
