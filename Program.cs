@@ -1,10 +1,10 @@
-﻿using System;
+﻿using EducationalTasks;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Security.Policy;
 using System.Text;
-using static UlearnTasks.Program;
 
 namespace UlearnTasks
 {
@@ -28,7 +28,7 @@ namespace UlearnTasks
         /// <param name="commands"></param>
         /// <example> "push Привет! Пока!", "pop 5" </example>
         /// <returns>converted from StringBuilder to string result of "push"/"pop" commands.</returns>
-        private static string ApplyCommands(string[] commands)
+        public static string ApplyCommands(string[] commands)
         {
             var strBuilder = new StringBuilder();
             foreach (var command in commands)
@@ -67,43 +67,6 @@ namespace UlearnTasks
                     statistics[c]++;
             }
             return statistics;
-        }
-
-        /// <summary>
-        /// Windowing method search of the longest substring 
-        /// O(n) time complexity
-        /// </summary>
-        /// <param name="s"></param>
-        /// <example>
-        ///     string sequence = "abcbada"
-        ///     //answer is 4 (cbad)
-        /// </example>
-        /// <returns></returns>
-        public static int LongestSubstring(string s)
-        {
-            int answer = 0, left = 0, right = 0;
-            HashSet<char> set = new HashSet<char>();
-
-            while (right < s.Length)
-            {
-                char c = s[right];
-                if (!set.Contains(c))
-                {
-                    set.Add(c);
-                    answer = Math.Max(answer, right - left + 1);
-                    right++;
-                }
-                else
-                {
-                    while (set.Contains(c))
-                    {
-                        set.Remove(s[left]);
-                        left++;
-                    }
-                }
-            }
-
-            return answer;
         }
 
         /// <summary>
