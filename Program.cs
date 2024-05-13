@@ -1,4 +1,4 @@
-﻿using EducationalTasks;
+﻿using EduProject;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Security.Policy;
 using System.Text;
 
-namespace UlearnTasks
+namespace EduProject
 {
 
     internal class Program
