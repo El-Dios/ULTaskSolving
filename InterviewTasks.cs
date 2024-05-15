@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Reflection.Emit;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -70,6 +73,23 @@ namespace EduProject
             }
 
             return dp[houses.Length - 1];
+        }
+
+        /// <summary>
+        /// Check if word is palindrome.
+        /// </summary>
+        /// <param name="s"></param>
+        /// <example>
+        /// True: "казак, шалаш, мадам, дед, наворован"
+        /// False: "дом, полисадник, квартира, пиджак"
+        /// </example>
+        /// <returns></returns>
+        public static bool IsPalindrome(string s)
+        {
+            for (int i = 0, j = s.Length - 1 ; i < j; i++, j--)
+                if (s[i] != s[j])
+                    return false;
+            return true;
         }
     }
 }
